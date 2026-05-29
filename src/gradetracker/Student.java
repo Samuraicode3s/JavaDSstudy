@@ -21,7 +21,7 @@ public class Student {
 		total = sum / numbers;
 		return total;
 	}
-	
+
 	public int getMax() {
 		// counter, loop, replace with biggest, return
 		int max = 0;
@@ -32,8 +32,7 @@ public class Student {
 		}
 		return max;
 	}
-	
-	
+
 	public int getMin() {
 		// counter, loop, replace with smallest, return
 		int min = 100000000;
@@ -44,16 +43,33 @@ public class Student {
 		}
 		return min;
 	}
-	
-	
-	
-	
+
+	public String getLetterGrade() {
+		// get average first, then go through if else to see where it ends up
+		int avg = getAverage();
+		if (avg >= 90 && avg <= 100) {
+			return "A";
+		}
+		if (avg >= 80 && avg <= 89) {
+			return "B";
+		}
+		if (avg >= 70 && avg <= 79) {
+			return "C";
+		}
+		if (avg >= 60 && avg <= 69) {
+			return "D";
+		}
+		else {
+			return "F";
+		}
+	}
 
 	public void printInfo() {
 		System.out.println("Student name: " + name);
 		System.out.println("The average grade is: " + getAverage());
 		System.out.println("The max grade is: " + getMax());
 		System.out.println("The min grade is: " + getMin());
+		System.out.println("The letter grade is: " + getLetterGrade());
 	}
 
 }
