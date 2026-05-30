@@ -15,10 +15,11 @@ public class Main {
 		Student S2 = new Student("Jeiran", grades2);
 		S2.printInfo();
 		System.out.println();
-		
+
 		Student GS1 = new GraduateStudent("John", grades3, "Cybersecurity");
 		GS1.printInfo();
-		
+		System.out.println();
+		GS1.generateReport();
 	}
 
 }

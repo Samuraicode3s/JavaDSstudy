@@ -86,5 +86,13 @@ public class Student {
 		System.out.println("The min grade is: " + getMin());
 		System.out.println("The letter grade is: " + getLetterGrade());
 	}
+	
+	public void generateReport() {
+		System.out.print("Report for " + name + ":\n");
+		System.out.println("------------------------");
+		printInfo();
+		System.out.println("This interface has been implemented.");
+	}
+	
 
 }
