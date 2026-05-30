@@ -13,7 +13,11 @@ public class Main {
 
 		Student S2 = new Student("Jeiran", grades2);
 		S2.printInfo();
-
+		
+		System.out.print(S1.getName());
+		S1.setName("Jonin");
+		System.out.print(S1.getName());
+		S1.printInfo();
 	}
 
 }

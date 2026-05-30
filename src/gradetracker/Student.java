@@ -10,6 +10,22 @@ public class Student {
 		this.grades = grades;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int[] getGrades() {
+		return grades;
+	}
+
+	public void setGrades(int[] grades) {
+		this.grades = grades;
+	}
+
 	public int getAverage() {
 		// loop through, add all numbers, then divide by amount of numbers
 		int sum = 0;
@@ -58,8 +74,7 @@ public class Student {
 		}
 		if (avg >= 60 && avg <= 69) {
 			return "D";
-		}
-		else {
+		} else {
 			return "F";
 		}
 	}
