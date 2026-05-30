@@ -87,6 +87,7 @@ public class Student {
 		System.out.println("The letter grade is: " + getLetterGrade());
 	}
 	
+	
 	public void generateReport() {
 		System.out.print("Report for " + name + ":\n");
 		System.out.println("------------------------");

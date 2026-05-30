@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class Main {
 
 	public static void main(String[] args) {
+		// System.out.println(); COPY
 		/*
 		 * printNumbers(5); System.out.psrintln(); printEven(10); System.out.println();
 		 * printOdd(9); System.out.println(); System.out.println(sumUpTo(25));
@@ -24,6 +25,11 @@ public class Main {
 		System.out.println("Does nums contain number 0? " + containsValue(nums, 0));
 		System.out.println("Does nums contain number 8? " + containsValue(nums, 8));
 		System.out.println("4 shows up this many times: " + countOccurences(nums, 4));
+		System.out.println();
+		System.out.println("Recursive method returns: " + sumOfAll(4));
+		System.out.println();
+		System.out.print("Reversing a string: " + recursiveReverseString("palindrome"));
+
 	}
 
 	public static void printNumbers(int n) {
@@ -96,17 +102,16 @@ public class Main {
 	}
 
 	public static int findMax(int[] arr) {
-        // hold max, loop, replace, return max in the end
-        int max = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > max) {
-                max = arr[i];
-            }
-        }
-        return max;
-    }
-	
-	
+		// hold max, loop, replace, return max in the end
+		int max = 0;
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] > max) {
+				max = arr[i];
+			}
+		}
+		return max;
+	}
+
 	public static boolean containsValue(int[] arr, int target) {
 		// loop through, if stat to see if target in arr, then return
 		for (int i = 0; i < arr.length; i++) {
@@ -116,7 +121,7 @@ public class Main {
 		}
 		return false;
 	}
-	
+
 	public static int countOccurences(int[] arr, int target) {
 		// set counter to 0, loop through, each hit adds +1, return counter
 		int total = 0;
@@ -127,7 +132,27 @@ public class Main {
 		}
 		return total;
 	}
-	
-	
+
+	public static int sumOfAll(int n) {
+		// base case, rec case, Make sure base case is less than or equal so no
+		// StackOverflowError
+		// This recursive method will return the sum of all ints from 1 to n
+		if (n <= 0) {
+			return 0;
+		} else {
+			return n + sumOfAll(n - 1);
+		}
+	}
+
+	public static String recursiveReverseString(String word) {
+		// Base case: nothing left to reverse, stop and return empty string
+		if (word.length() == 0) {
+			return "";
+		} else {
+			// Recursive case: take last char + reverse the rest
+			return word.charAt(word.length() - 1) + recursiveReverseString(word.substring(0, word.length() - 1));
+		}
+
+	}
 
 }
