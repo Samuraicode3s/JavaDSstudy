@@ -29,6 +29,8 @@ public class Main {
 		System.out.println("Recursive method returns: " + sumOfAll(4));
 		System.out.println();
 		System.out.print("Reversing a string: " + recursiveReverseString("palindrome"));
+		System.out.println(); 
+		System.out.println("Is this number a palindrome? " + isPalindrome("121"));
 
 	}
 
@@ -155,4 +157,16 @@ public class Main {
 
 	}
 
+	public static boolean isPalindrome(String s) {
+		// convert int to string, then base case, then rec case
+		// base case, what to do when nothing left
+		if (s.length() == 0 || s.length() == 1) {
+			return true;
+		}
+		if (s.charAt(0) == s.charAt(s.length() - 1)) {
+			return isPalindrome(s.substring(1, s.length() - 1));
+		} else {
+			return false;
+		}
+	}
 }
