@@ -11,9 +11,9 @@ public class Main {
 		 * printOdd(9); System.out.println(); System.out.println(sumUpTo(25));
 		 * System.out.println(); System.out.println(factorial(5));
 		 */
-		int[] nums = { 2, 4, 6, 4, 8, 4, 10 };
+		int[] nums = { 1, 2, 32, 4, 6, 26, 8, 9, 10, 15, 47 };
 		for (int num : nums) {
-			System.out.println(num);
+			System.out.print(num + " ");
 		}
 		System.out.println();
 		System.out.print("Sum of numbers in array: " + sumArray(nums));
@@ -35,140 +35,146 @@ public class Main {
 		System.out.println("Fibonacci sequence: " + fibonacci(12));
 		System.out.println();
 		System.out.println("sum of the number of digits: " + sumDigits(123));
+		System.out.println();
+
+		System.out.println("Even numbers filtered: " + Arrays.toString(filterEvens(nums)));
+		System.out.println();
+		System.out.println("Second largest number: " + secondLargest(nums));
 
 	}
 
 	// Prints all integers from 1 to n
 	public static void printNumbers(int n) {
-	    for (int i = 1; i <= n; i++) {
-	        System.out.println(i);
-	    }
+		for (int i = 1; i <= n; i++) {
+			System.out.println(i);
+		}
 	}
 
 	// Prints all even numbers from 2 to n, stepping by 2
 	public static void printEven(int n) {
-	    for (int i = 2; i <= n; i += 2) {
-	        System.out.println(i);
-	    }
+		for (int i = 2; i <= n; i += 2) {
+			System.out.println(i);
+		}
 	}
 
 	// Prints all odd numbers from 1 to n, stepping by 2
 	public static void printOdd(int n) {
-	    for (int i = 1; i <= n; i += 2) {
-	        System.out.println(i);
-	    }
+		for (int i = 1; i <= n; i += 2) {
+			System.out.println(i);
+		}
 	}
 
 	// Returns the sum of all numbers from 1 to n using a loop
 	public static int sumUpTo(int n) {
-	    int num = 0;
-	    for (int i = 1; i <= n; i++) {
-	        num += i;
-	    }
-	    return num;
+		int num = 0;
+		for (int i = 1; i <= n; i++) {
+			num += i;
+		}
+		return num;
 	}
 
 	// Recursively computes n! (n factorial)
 	// Base case: 0! = 1 (nothing left to multiply)
 	// Recursive case: n * (n-1)!
 	public static int factorial(int n) {
-	    if (n == 0) {
-	        return 1;
-	    } else {
-	        return n * factorial((n - 1));
-	    }
+		if (n == 0) {
+			return 1;
+		} else {
+			return n * factorial((n - 1));
+		}
 	}
 
 	// Takes an array and returns the sum of all its elements
 	public static int sumArray(int[] arr) {
-	    int sum = 0;
-	    for (int number : arr) {
-	        sum += number;
-	    }
-	    return sum;
+		int sum = 0;
+		for (int number : arr) {
+			sum += number;
+		}
+		return sum;
 	}
 
 	// Returns a new array with elements in reverse order
 	// i starts at left of arr, j starts at right of rev
 	// Each iteration: copy arr[i] into rev[j], move both pointers inward
 	public static int[] reverseArray(int[] arr) {
-	    int[] rev = new int[arr.length];
-	    int j = arr.length - 1;
-	    for (int i = 0; i < arr.length; i++) {
-	        rev[j] = arr[i];
-	        j--;
-	    }
-	    return rev;
+		int[] rev = new int[arr.length];
+		int j = arr.length - 1;
+		for (int i = 0; i < arr.length; i++) {
+			rev[j] = arr[i];
+			j--;
+		}
+		return rev;
 	}
 
 	// Returns the largest value in the array
 	// Holds a max variable, replaces it whenever a larger value is found
 	public static int findMax(int[] arr) {
-	    int max = 0;
-	    for (int i = 0; i < arr.length; i++) {
-	        if (arr[i] > max) {
-	            max = arr[i];
-	        }
-	    }
-	    return max;
+		int max = 0;
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] > max) {
+				max = arr[i];
+			}
+		}
+		return max;
 	}
 
 	// Returns true if target exists in the array, false otherwise
 	public static boolean containsValue(int[] arr, int target) {
-	    for (int i = 0; i < arr.length; i++) {
-	        if (target == arr[i]) {
-	            return true;
-	        }
-	    }
-	    return false;
+		for (int i = 0; i < arr.length; i++) {
+			if (target == arr[i]) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	// Returns how many times target appears in the array
 	public static int countOccurences(int[] arr, int target) {
-	    int total = 0;
-	    for (int i = 0; i < arr.length; i++) {
-	        if (target == arr[i]) {
-	            total++;
-	        }
-	    }
-	    return total;
+		int total = 0;
+		for (int i = 0; i < arr.length; i++) {
+			if (target == arr[i]) {
+				total++;
+			}
+		}
+		return total;
 	}
 
 	// Recursively returns the sum of all integers from 1 to n
 	// Base case: nothing left to add (n <= 0), return 0
 	// Recursive case: add n to the sum of everything below it
 	public static int sumOfAll(int n) {
-	    if (n <= 0) {
-	        return 0;
-	    } else {
-	        return n + sumOfAll(n - 1);
-	    }
+		if (n <= 0) {
+			return 0;
+		} else {
+			return n + sumOfAll(n - 1);
+		}
 	}
 
 	// Recursively reverses a string
 	// Base case: empty string, nothing left to reverse, return ""
 	// Recursive case: take last char + reverse everything before it
 	public static String recursiveReverseString(String word) {
-	    if (word.length() == 0) {
-	        return "";
-	    } else {
-	        return word.charAt(word.length() - 1) + recursiveReverseString(word.substring(0, word.length() - 1));
-	    }
+		if (word.length() == 0) {
+			return "";
+		} else {
+			return word.charAt(word.length() - 1) + recursiveReverseString(word.substring(0, word.length() - 1));
+		}
 	}
 
-	// Recursively checks if a string is a palindrome (reads same forwards and backwards)
+	// Recursively checks if a string is a palindrome (reads same forwards and
+	// backwards)
 	// Base case: 0 or 1 characters left, always a palindrome, return true
 	// Recursive case: if first and last chars match, check the middle
 	// If they don't match, return false immediately
 	public static boolean isPalindrome(String s) {
-	    if (s.length() == 0 || s.length() == 1) {
-	        return true;
-	    }
-	    if (s.charAt(0) == s.charAt(s.length() - 1)) {
-	        return isPalindrome(s.substring(1, s.length() - 1));
-	    } else {
-	        return false;
-	    }
+		if (s.length() == 0 || s.length() == 1) {
+			return true;
+		}
+		if (s.charAt(0) == s.charAt(s.length() - 1)) {
+			return isPalindrome(s.substring(1, s.length() - 1));
+		} else {
+			return false;
+		}
 	}
 
 	// Recursively returns the nth Fibonacci number
@@ -177,25 +183,65 @@ public class Main {
 	// Base case 2: n == 1 or 2, return 1
 	// Recursive case: sum of the two previous Fibonacci numbers
 	public static int fibonacci(int n) {
-	    if (n == 0) {
-	        return 0;
-	    }
-	    if (n == 1 || n == 2) {
-	        return 1;
-	    } else {
-	        return fibonacci(n - 1) + fibonacci(n - 2);
-	    }
+		if (n == 0) {
+			return 0;
+		}
+		if (n == 1 || n == 2) {
+			return 1;
+		} else {
+			return fibonacci(n - 1) + fibonacci(n - 2);
+		}
 	}
 
 	// Recursively returns the sum of all digits in n
 	// Base case: n == 0, nothing left, return 0
 	// Recursive case: last digit (n % 10) + sum of remaining digits (n / 10)
 	public static int sumDigits(int n) {
-	    if (n == 0) {
-	        return 0;
-	    } else {
-	        return n % 10 + sumDigits(n / 10);
-	    }
+		if (n == 0) {
+			return 0;
+		} else {
+			return n % 10 + sumDigits(n / 10);
+		}
+	}
+
+	public static int[] filterEvens(int[] arr) {
+		// counter for evens, loop through, find evens, add evens to array that is the
+		// size of the number of evens
+		int even = 0;
+		int index = 0;
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] % 2 == 0) {
+				even++; // found 3 evens, now size is 3
+			}
+
+		}
+		int[] evenList = new int[even];
+		for (int j = 0; j < arr.length; j++) {
+			if (arr[j] % 2 == 0) {
+				evenList[index] = arr[j];
+				index++;
+			}
+		}
+		return evenList;
+	}
+
+	// { 1 2 3 4 5}
+	public static int secondLargest(int[] arr) {
+		// create largest and second largest int
+		// loop, and ifs to compare
+		int max = 0;
+		int second = 0;
+		for (int i = 0; i < arr.length; i++) {
+
+			if (arr[i] > max) {
+				second = max;
+				max = arr[i];
+			}
+			if (arr[i] < max && arr[i] > second) {
+				second = arr[i];
+			}
+		}
+		return second;
 	}
 
 }
