@@ -12,6 +12,9 @@ public class Main {
 		 * System.out.println(); System.out.println(factorial(5));
 		 */
 		int[] nums = { 1, 2, 32, 4, 6, 26, 8, 9, 10, 15, 47 };
+		int[] small = { 1, 2, 3, 4, 5 };
+		int[] duplicates = { 1, 1, 1, 2, 2, 3, 3, 4, 4, 5, 6 };
+
 		for (int num : nums) {
 			System.out.print(num + " ");
 		}
@@ -40,6 +43,12 @@ public class Main {
 		System.out.println("Even numbers filtered: " + Arrays.toString(filterEvens(nums)));
 		System.out.println();
 		System.out.println("Second largest number: " + secondLargest(nums));
+		System.out.println();
+		System.out.println("The list was shifted left by one: " + Arrays.toString(shiftLeftOne(small)));
+		System.out.println();
+		System.out.println("The sum of 2 numbers in an array: " + twoSum(small, 6));
+		System.out.println();
+		System.out.println("Duplicates removed from sorted list " + Arrays.toString(removeDuplicates(duplicates)));
 
 	}
 
@@ -108,8 +117,11 @@ public class Main {
 
 	// Returns the largest value in the array
 	// Holds a max variable, replaces it whenever a larger value is found
+	// Start with the first element of the array. That way it works for any array —
+	// negatives, all the same number, anything. Then your loop starts at i = 1
+	// since you already "checked" index 0.
 	public static int findMax(int[] arr) {
-		int max = 0;
+		int max = arr[0];
 		for (int i = 0; i < arr.length; i++) {
 			if (arr[i] > max) {
 				max = arr[i];
@@ -244,4 +256,55 @@ public class Main {
 		return second;
 	}
 
+	public static int[] shiftLeftOne(int[] arr) {
+		int first = arr[0];
+		for (int i = 0; i < arr.length - 1; i++) {
+			arr[i] = arr[i + 1];
+		}
+		arr[arr.length - 1] = first;
+		return arr;
+	}
+
+	/*
+	 * public static boolean twoSum(int[] arr, int target){} loop through first. You
+	 * cant really go wrong with this step. So to have a loop check for 2 numbers,
+	 * NOT RIGHT NEXT TO EACH OTHER, but compare one number witht he rest, and do
+	 * that with every number is the goal when looping, if index at position i +
+	 * index at position j is equal to target, return true This means need i to loop
+	 * through whole thing, and j will be added to every number. this means arr[0] +
+	 * arr[0], then arr[0] + arr[1], and so on, with a if loop checking
+	 */
+
+	public static boolean twoSum(int[] arr, int target) {
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = i + 1; j < arr.length; j++) {
+				if (arr[i] + arr[j] == target) {
+					return true;
+				}
+
+			}
+		}
+		return false;
+	}
+// you can do i + 1, but you need to stop the loop one early: i < arr.length - 1.
+
+	public static int[] removeDuplicates(int[] arr) {
+		int numDuplicates = 0;
+		int index = 0;
+		for (int i = 0; i < arr.length - 1; i++) {
+			if (arr[i] == arr[i + 1]) {
+				numDuplicates++;
+			}
+		}
+		int[] cleanedList = new int[arr.length - numDuplicates];
+		for (int j = 0; j < arr.length - 1; j++) {
+			if (arr[j] == arr[j + 1]) {
+				cleanedList[index] = arr[j];
+				index++;
+			}
+			return cleanedList;
+		}
+	}
+
+// DO NOT DELETE
 }
