@@ -23,22 +23,18 @@ public class Network {
         devices.put(ip, d);
 
         System.out.println("=== DEVICE ADDED ===");
-        System.out.println("IP: " + ip);
     }
 
     public Device removeDevice(String ip) {
 
         if (!devices.containsKey(ip)) {
             System.out.println("=== DEVICE NOT FOUND ===");
-            System.out.println("IP: " + ip);
             return null;
         }
 
         Device removed = devices.remove(ip);
 
         System.out.println("=== DEVICE REMOVED ===");
-        System.out.println("IP: " + ip);
-        System.out.println("Name: " + removed.getName());
 
         return removed;
     }
