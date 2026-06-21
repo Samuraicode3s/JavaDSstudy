@@ -109,18 +109,25 @@ public class Device {
 	 * Service → prints itself
 	 */
 
-	@Override
-	public String toString() {
 
-		String result = "=== Device Info ===" + "\n" + "Name: " + name + "\n" +
-				"IP address: " + ipAddress + "\n" + "OS: " + OS + "\n" + "Online: " + isOnline + "\n";
-
-		for (Service s : services) {
-			result += "    " + s.toString() + "\n";
-		}
-
-		return result;
-
+	public String getName(){
+		return name;
 	}
+
+	@Override
+public String toString() {
+
+    String result =
+            "Name: " + name + "\n" +
+            "IP address: " + ipAddress + "\n" +
+            "OS: " + OS + "\n" +
+            "Online: " + isOnline + "\n";
+
+    for (Service s : services) {
+        result += "    " + s.toString() + "\n";
+    }
+
+    return result;
+}
 
 }
