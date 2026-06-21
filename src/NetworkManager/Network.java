@@ -13,6 +13,9 @@ public class Network {
 	// → Using String allows formats like "192.168.1.10".
 
 	// const goes here
+	public Network(){
+		devices = new HashMap<>();
+	}
 
 	// Why Device d?
 	// → We pass in a fully created Device object.
@@ -81,7 +84,14 @@ public class Network {
 
 	// since many devices will be listed, it is simpler to return ArrayList<Device>
 	public ArrayList<Device> listDevices() {
-		return null;
+
+		ArrayList<Device> devicesNew = new ArrayList<Device>();
+
+		for (Device d : devices.values()) {
+			devicesNew.add(d);
+		}
+		return devicesNew;
+
 	}
 
 	/*
@@ -91,5 +101,5 @@ public class Network {
 	 * ArrayList<Device>
 	 */
 
-// DO NOT REMOVE	
+	// DO NOT REMOVE
 }

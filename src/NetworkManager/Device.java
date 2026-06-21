@@ -37,9 +37,6 @@ public class Device {
 	 * a service already exists on that port → print detailed warning: - port number
 	 * - existing service name - conflict reason
 	 * 
-	 * Flagging: - sets lastOperationConflict = true if conflict occurs - sets
-	 * lastOperationConflict = false if successful add
-	 * 
 	 * This method does NOT handle user interaction.
 	 */
 	public void addService(Service s) {
@@ -104,6 +101,26 @@ public class Device {
 	// confused which is easer to do now? which one better for CLI for NOW?
 	public String getServices() {
 		return null;
+	}
+
+	/*
+	 * Network → manages Devices
+	 * Device → owns Services
+	 * Service → prints itself
+	 */
+
+	@Override
+	public String toString() {
+
+		String result = "=== Device Info ===" + "\n" + "Name: " + name + "\n" +
+				"IP address: " + ipAddress + "\n" + "OS: " + OS + "\n" + "Online: " + isOnline + "\n";
+
+		for (Service s : services) {
+			result += "    " + s.toString() + "\n";
+		}
+
+		return result;
+
 	}
 
 }
