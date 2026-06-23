@@ -16,6 +16,10 @@ public class NetworkCLI {
             System.out.println("5. List Devices");
             System.out.println("6. Find Device");
             System.out.println("7. Exit");
+            System.out.println("5. List Devices");
+            System.out.println("5. List Devices");
+            System.out.println("5. List Devices");
+            System.out.println("5. List Devices");
 
             int choice = sc.nextInt();
             sc.nextLine();
