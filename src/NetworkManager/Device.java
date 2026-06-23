@@ -39,54 +39,34 @@ public class Device {
 	 * 
 	 * This method does NOT handle user interaction.
 	 */
-	public void addService(Service s) {
+	public boolean addService(Service s) {
 
-		for (Service existing : services) {
+	    for (Service existing : services) {
 
-			if (existing.getPort() == s.getPort()) {
+	        if (existing.getPort() == s.getPort()) {
+	            return false;
+	        }
+	    }
 
-				System.out.println("=== SERVICE CONFLICT ===");
-				System.out.println("Port: " + s.getPort());
-				System.out.println("Existing Service: " + existing.getName());
-				System.out.println("New Service: " + s.getName());
-				System.out.println("Reason: Port already in use on this device");
-
-				return;
-			}
-		}
-
-		services.add(s);
-
-		System.out.println("=== SERVICE ADDED ===");
-		System.out.println("Service: " + s.getName());
-		System.out.println("Port: " + s.getPort());
+	    services.add(s);
+	    return true;
 	}
 
 	// Device owns ArrayList<Service>, so it will need to search inside list and
 	// remove matching service
 	// this means param should be a port
 	// void because it completes an action and does not need to return anything
-	public void removeService(int port) {
+	public boolean removeService(int port) {
 
-		for (int i = 0; i < services.size(); i++) {
+	    for (int i = 0; i < services.size(); i++) {
 
-			Service existing = services.get(i);
+	        if (services.get(i).getPort() == port) {
+	            services.remove(i);
+	            return true;
+	        }
+	    }
 
-			if (existing.getPort() == port) {
-
-				services.remove(i);
-
-				System.out.println("=== REMOVED SERVICE ===");
-				System.out.println("Service: " + existing.getName());
-				System.out.println("Port: " + existing.getPort());
-
-				return;
-			}
-		}
-
-		// if we reach here → nothing found
-		System.out.println("=== SERVICE NOT FOUND ===");
-		System.out.println("Port: " + port);
+	    return false;
 	}
 
 	/*
@@ -104,30 +84,28 @@ public class Device {
 	}
 
 	/*
-	 * Network → manages Devices
-	 * Device → owns Services
-	 * Service → prints itself
+	 * Network → manages Devices Device → owns Services Service → prints itself
 	 */
 
-
-	public String getName(){
+	public String getName() {
 		return name;
+	}
+	
+	public String getIP() {
+		return ipAddress;
 	}
 
 	@Override
-public String toString() {
+	public String toString() {
 
-    String result =
-            "Name: " + name + "\n" +
-            "IP address: " + ipAddress + "\n" +
-            "OS: " + OS + "\n" +
-            "Online: " + isOnline + "\n";
+		String result = "Name: " + name + "\n" + "IP address: " + ipAddress + "\n" + "OS: " + OS + "\n" + "Online: "
+				+ isOnline + "\n";
 
-    for (Service s : services) {
-        result += "    " + s.toString() + "\n";
-    }
+		for (Service s : services) {
+			result += "=== SERVICES FOR " + name +  " === " + "\n" + s.toString() + "\n";
+		}
 
-    return result;
-}
+		return result;
+	}
 
 }

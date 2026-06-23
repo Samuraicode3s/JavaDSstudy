@@ -5,59 +5,45 @@ import java.util.LinkedHashMap;
 
 public class Network {
 
-    private LinkedHashMap<String, Device> devices;
+	private LinkedHashMap<String, Device> devices;
 
-    public Network() {
-        devices = new LinkedHashMap<>();
-    }
+	public Network() {
+		devices = new LinkedHashMap<>();
+	}
 
-    public void addDevice(String ip, Device d) {
+	public boolean addDevice(String ip, Device d) {
 
-        if (devices.containsKey(ip)) {
-            System.out.println("=== DEVICE EXISTS ===");
-            System.out.println("IP: " + ip);
-            System.out.println("Action: not added (duplicate IP)");
-            return;
-        }
+		if (devices.containsKey(ip)) {
+			return false;
+		}
 
-        devices.put(ip, d);
+		devices.put(ip, d);
+		return true;
+	}
 
-        System.out.println("=== DEVICE ADDED ===");
-    }
+	public Device removeDevice(String ip) {
 
-    public Device removeDevice(String ip) {
+		if (!devices.containsKey(ip)) {
+			return null;
+		}
 
-        if (!devices.containsKey(ip)) {
-            System.out.println("=== DEVICE NOT FOUND ===");
-            return null;
-        }
+		Device removed = devices.remove(ip);
 
-        Device removed = devices.remove(ip);
+		return removed;
+	}
 
-        System.out.println("=== DEVICE REMOVED ===");
+	public Device findDevice(String ip) {
 
-        return removed;
-    }
+		if (!devices.containsKey(ip)) {
+			return null;
+		}
 
-    public Device findDevice(String ip) {
+		Device found = devices.get(ip);
+		return found;
+	}
 
-        if (!devices.containsKey(ip)) {
-            System.out.println("=== DEVICE NOT FOUND ===");
-            System.out.println("IP: " + ip);
-            return null;
-        }
+	public ArrayList<Device> listDevices() {
 
-        Device found = devices.get(ip);
-
-        System.out.println("=== DEVICE FOUND ===");
-        System.out.println("IP: " + ip);
-        System.out.println("Name: " + found.getName());
-
-        return found;
-    }
-
-    public ArrayList<Device> listDevices() {
-
-        return new ArrayList<>(devices.values());
-    }
+		return new ArrayList<>(devices.values());
+	}
 }
