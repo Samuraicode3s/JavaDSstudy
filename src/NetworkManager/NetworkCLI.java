@@ -6,8 +6,6 @@ public class NetworkCLI {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Network net1 = new Network();
-        System.out.println("GITHUB SUCKS");
-
 
         while (true) {
             System.out.println("\n=== NETWORK MENU ===");
@@ -18,10 +16,7 @@ public class NetworkCLI {
             System.out.println("5. List Devices");
             System.out.println("6. Find Device");
             System.out.println("7. Exit");
-            System.out.println("5. List Devices");
-            System.out.println("5. List Devices");
-            System.out.println("5. List Devices");
-            System.out.println("5. List Devices");
+
 
             int choice = sc.nextInt();
             sc.nextLine();
