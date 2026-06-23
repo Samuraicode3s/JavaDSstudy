@@ -6,6 +6,8 @@ public class NetworkCLI {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Network net1 = new Network();
+        System.out.println("GITHUB SUCKS");
+
 
         while (true) {
             System.out.println("\n=== NETWORK MENU ===");
