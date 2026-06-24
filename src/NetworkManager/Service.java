@@ -31,6 +31,7 @@ public class Service {
 	public void setIsRunning(boolean b) {
 		isRunning = b;
 	}
+	//TESTING
 
 	@Override
 	public String toString() {
