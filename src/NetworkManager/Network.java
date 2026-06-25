@@ -7,6 +7,7 @@ public class Network {
 
 	private LinkedHashMap<String, Device> devices;
 
+	// const
 	public Network() {
 		devices = new LinkedHashMap<>();
 	}
@@ -46,4 +47,38 @@ public class Network {
 
 		return new ArrayList<>(devices.values());
 	}
+
+	public void networkSummary() {
+		// find size devices.size()
+		// loop through all devices
+		// get each of their services for (Device d : devices.values())
+		// in each device find # of services and their status. count running and stopped
+		// expose services list (getter), OR
+		// provide helper methods
+		// track totalServices, running, and stopped
+		int totalDevices = devices.size();
+		int totalServices = 0;
+		int running = 0;
+		int stopped = 0;
+
+		for (Device d : devices.values()) {
+			for (Service s : d.getServices()) {
+				totalServices++;
+				if (s.getIsRunning()) {
+					running++;
+				} else {
+					stopped++;
+				}
+
+			}
+
+		}
+		System.out.println("=== NETWORK SUMMARY ===");
+		System.out.println("Devices: " + totalDevices);
+		System.out.println("Total Services: " + totalServices);
+		System.out.println("Running: " + running);
+		System.out.println("Stopped: " + stopped);
+
+	}
+
 }

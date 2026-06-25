@@ -41,15 +41,15 @@ public class Device {
 	 */
 	public boolean addService(Service s) {
 
-	    for (Service existing : services) {
+		for (Service existing : services) {
 
-	        if (existing.getPort() == s.getPort()) {
-	            return false;
-	        }
-	    }
+			if (existing.getPort() == s.getPort()) {
+				return false;
+			}
+		}
 
-	    services.add(s);
-	    return true;
+		services.add(s);
+		return true;
 	}
 
 	// Device owns ArrayList<Service>, so it will need to search inside list and
@@ -58,15 +58,15 @@ public class Device {
 	// void because it completes an action and does not need to return anything
 	public boolean removeService(int port) {
 
-	    for (int i = 0; i < services.size(); i++) {
+		for (int i = 0; i < services.size(); i++) {
 
-	        if (services.get(i).getPort() == port) {
-	            services.remove(i);
-	            return true;
-	        }
-	    }
+			if (services.get(i).getPort() == port) {
+				services.remove(i);
+				return true;
+			}
+		}
 
-	    return false;
+		return false;
 	}
 
 	/*
@@ -79,30 +79,61 @@ public class Device {
 	// When services are displayed, they are returned as string in a viewable list
 	// for now will return just ArrayList<Service>, formatted later
 	// confused which is easer to do now? which one better for CLI for NOW?
-	public String getServices() {
-		return null;
+	public ArrayList<Service> getServices() {
+		return services;
 	}
 
 	/*
 	 * Network → manages Devices Device → owns Services Service → prints itself
 	 */
 
+	public boolean toggleService(int port) {
+
+		// loop through services
+		for (Service s : services) {
+			if (s.getPort() == port) {
+				if (s.getIsRunning()) {
+					s.setIsRunning(false);
+					return true;
+				} else {
+					s.setIsRunning(true);
+					return true;
+				}
+
+			}
+		}
+		return false;
+
+		// find matching port
+
+		// change running state
+
+		// return true
+
+		// return false if not found
+	}
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public String getIP() {
 		return ipAddress;
 	}
-
+	
+	
+	
+	
+	
+	
 	@Override
 	public String toString() {
 
-		String result = "Name: " + name + "\n" + "IP address: " + ipAddress + "\n" + "OS: " + OS + "\n" + "Online: "
-				+ isOnline + "\n";
+		String result = "========================" + "\n" + "DEVICE: " + name + "\n" + "IP: " + ipAddress + "\n"
+				+ "OS: " + OS + "\n" + "ONLINE: " + isOnline + "\n";
 
 		for (Service s : services) {
-			result += "=== SERVICES FOR " + name +  " === " + "\n" + s.toString() + "\n";
+			result += "\n" + name + " === " + "\n" + s.toString() + "\n\n";
 		}
 
 		return result;

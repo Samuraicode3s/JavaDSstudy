@@ -31,11 +31,11 @@ public class Service {
 	public void setIsRunning(boolean b) {
 		isRunning = b;
 	}
-	//TESTING
+	
 
 	@Override
 	public String toString() {
-		return "Service name: " + name + "\n" + "Port: " + port + "\n" + "IsRunning: " + isRunning;
+		return "- " + name + "\n" + "Port: " + port + "\n" + "Running: " + isRunning;
 	}
 
 }
