@@ -11,6 +11,12 @@ public class Network {
 	public Network() {
 		devices = new LinkedHashMap<>();
 	}
+	
+	
+	
+	
+	
+	
 
 	public boolean addDevice(String ip, Device d) {
 
@@ -48,14 +54,27 @@ public class Network {
 		return new ArrayList<>(devices.values());
 	}
 
-	//TES TEST TEST
-	
-	
-	
-	
-	
-	
-	
+	public void saveNetwork(String filename) {
+		/*
+		 * Open file. Loop through devices. Write one DEVICE line. Loop through
+		 * services. Write SERVICE lines. Close file.
+		 */
+	}
+
+	public void loadNetwork(String filename) {
+		/*
+		 * Open file. 
+		 * Read line. 
+		 * If line starts with DEVICE: 
+		 * create Device. remember it
+		 * as current device. 
+		 * If line starts with SERVICE: 
+		 * create Service. 
+		 * add it to
+		 * current device. Continue until end of file.
+		 */
+	}
+
 	public void networkSummary() {
 		// find size devices.size()
 		// loop through all devices

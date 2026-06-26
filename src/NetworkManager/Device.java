@@ -121,6 +121,13 @@ public class Device {
 		return ipAddress;
 	}
 	
+	public String getOS() {
+		return OS;
+	}
+	
+	public boolean getIsOnline() {
+		return isOnline;
+	}
 	
 	
 	

@@ -195,10 +195,17 @@ public class NetworkCLI {
 			// ==================================================
 			// 8. NETWORK SUMMARY
 			// ==================================================
-			if(choice == 8) {
+			if (choice == 8) {
 				net1.networkSummary();
 			}
-			
+
+			/*
+			 * boolean success = net1.saveNetwork("network.txt");
+			 * save succeeds → return true
+			 * save fails → return false
+			 * if (success) { System.out.println("Network saved."); } else {
+			 * System.out.println("Error saving file."); }
+			 */
 
 			// ==================================================
 			// 9. EXIT
@@ -210,6 +217,6 @@ public class NetworkCLI {
 
 		sc.close();
 	}
-	
+
 // DO NOT DELETE
 }
