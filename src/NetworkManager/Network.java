@@ -48,6 +48,14 @@ public class Network {
 		return new ArrayList<>(devices.values());
 	}
 
+	//TES TEST TEST
+	
+	
+	
+	
+	
+	
+	
 	public void networkSummary() {
 		// find size devices.size()
 		// loop through all devices
